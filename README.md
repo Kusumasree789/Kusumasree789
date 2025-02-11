@@ -5,8 +5,11 @@ A **Sophomore** (2nd-year) Undergraduate in **Computer Science Engineering** at 
 **GitHub:** [Kusumasree789](https://github.com/Kusumasree789)
 
 
-## 👩‍💻 All of my projects are available at:
-[My GitHub Projects](https://github.com/Kusumasree789](https://github.com/Kusumasree789?tab=repositories)
+## My GitHub Projects
+
+You can view all of my GitHub projects at the following link:
+
+[My GitHub Projects](https://github.com/Kusumasree789?tab=repositories)
 
 
 ## 📫 How to reach me:
