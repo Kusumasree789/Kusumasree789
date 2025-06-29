@@ -1,6 +1,6 @@
 # Hi 👋, I'm Nimmagadda Kusuma Sree
 
-A **Sophomore** (2nd-year) Undergraduate in **Computer Science Engineering** at **NIT Rourkela**.
+A **3rd-year** Undergraduate in **Computer Science Engineering** at **NIT Rourkela**.
 
 **GitHub:** [Kusumasree789](https://github.com/Kusumasree789)
 
@@ -20,8 +20,8 @@ You can view all of my GitHub projects at the following link:
 - [Instagram](https://www.instagram.com/kusumasree_789/)
 
 ## Languages and Tools:
-- **Languages**: C, C++, Python, JavaScript, HTML5, CSS3
-- **Tools**: Git, MySQL
+- **Languages & Development**: C, C++, Python, JavaScript, HTML5, CSS3, SQL
+- **Technologies & Tools**: AWS, Linux, MongoDB, MySQL, React.js, Git, VS Code
 
 ---
 
