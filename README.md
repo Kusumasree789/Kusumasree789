@@ -28,7 +28,3 @@ You can view all of my GitHub projects at the following link:
 ---
 
 Feel free to explore my repositories and collaborate with me! Let’s build amazing things together 🚀
-
-<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=kusumasree789&show_icons=true&locale=en&layout=compact" alt="kusumasree789" /></p>
-
-<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=kusumasree789&show_icons=true&locale=en" alt="kusumasree789" /></p>
