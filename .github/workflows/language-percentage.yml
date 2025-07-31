@@ -1,0 +1,51 @@
+name: Update Language Percentages
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * 0' # every Sunday at 00:00 UTC
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install tokei
+        run: sudo apt-get install -y tokei jq
+
+      - name: Run tokei and generate percentages
+        run: |
+          tokei . --output json > tokei.json
+          total=$(jq '[.[] | .code] | add' tokei.json)
+
+          echo "## Most Used Languages" > LANGUAGES.md
+          echo "" >> LANGUAGES.md
+          jq -r --arg total "$total" '
+            to_entries |
+            sort_by(-.value.code) |
+            .[] |
+            "\(.key) \(.value.code * 100 / ($total|tonumber))"
+          ' tokei.json | while read lang percent; do
+            printf "%-10s %5.2f%%\n" "$lang" "$percent" >> LANGUAGES.md
+          done
+
+          echo "" >> LANGUAGES.md
+          echo "_Updated on $(date '+%Y-%m-%d')_" >> LANGUAGES.md
+
+      - name: Insert into README
+        run: |
+          awk '/^## Most Used Languages/,EOF {next} {print}' README.md > TEMP.md
+          cat TEMP.md LANGUAGES.md > README.md
+
+      - name: Commit and push
+        run: |
+          git config user.name "readme-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add README.md
+          git commit -m "🔄 Update most used language percentages"
+          git push
