@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
   schedule:
-    - cron: '0 0 * * 0' # every Sunday at 00:00 UTC
+    - cron: '0 0 * * 0' # every Sunday
   workflow_dispatch:
 
 jobs:
@@ -15,10 +15,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install tokei
-        run: sudo apt-get install -y tokei jq
+      - name: Install tokei and jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tokei jq
 
-      - name: Run tokei and generate percentages
+      - name: Generate language percentages
         run: |
           tokei . --output json > tokei.json
           total=$(jq '[.[] | .code] | add' tokei.json)
@@ -31,7 +33,7 @@ jobs:
             .[] |
             "\(.key) \(.value.code * 100 / ($total|tonumber))"
           ' tokei.json | while read lang percent; do
-            printf "%-10s %5.2f%%\n" "$lang" "$percent" >> LANGUAGES.md
+            printf "%-12s %6.2f%%\n" "$lang" "$percent" >> LANGUAGES.md
           done
 
           echo "" >> LANGUAGES.md
@@ -39,8 +41,12 @@ jobs:
 
       - name: Insert into README
         run: |
-          awk '/^## Most Used Languages/,EOF {next} {print}' README.md > TEMP.md
-          cat TEMP.md LANGUAGES.md > README.md
+          if grep -q "## Most Used Languages" README.md; then
+            awk '/^## Most Used Languages/,EOF {next} {print}' README.md > TEMP.md
+            cat TEMP.md LANGUAGES.md > README.md
+          else
+            cat LANGUAGES.md >> README.md
+          fi
 
       - name: Commit and push
         run: |
