@@ -1,6 +1,6 @@
 <h1 align="center">Hi 👋, I'm Nimmagadda Kusuma Sree</h1>
 
-<h3 align="center">A 3rd-year Undergraduate in Computer Science Engineering at NIT Rourkela.</h3>
+<h3 align="center">A final-year Undergraduate in Computer Science Engineering at NIT Rourkela.</h3>
 
 **GitHub:** [Kusumasree789](https://github.com/Kusumasree789)
 
